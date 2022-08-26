@@ -18,13 +18,6 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Album album = new Album();
-            album.setName("aaaa");
-            album.setArtist("bbbb");
-            album.setPrice(10000);
-            album.setEtc("limited");
-            album.setStockQuantity(80);
-            em.persist(album);
 
             tx.commit();
         }catch (Exception e){

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //table 통합생성
-//@Inheritance(strategy = InheritanceType.JOINED) //join으로 생성
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //table 통합생성
+@Inheritance(strategy = InheritanceType.JOINED) //join으로 생성
 @DiscriminatorColumn
 @Table(name = "ITEM")
 public abstract class Item extends BaseEntity{
