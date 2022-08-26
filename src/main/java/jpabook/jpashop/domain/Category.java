@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Category {
+public class Category extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -14,7 +14,7 @@ public class Category {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) //즉시 로딩값이 디폴트인 것은 @ManyToOne, @OneToOne만
     @JoinColumn(name = "PARENT_ID")
     private Category parent;
 

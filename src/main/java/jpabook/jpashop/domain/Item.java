@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //table 통합생성
+//@Inheritance(strategy = InheritanceType.JOINED) //join으로 생성
+@DiscriminatorColumn
 @Table(name = "ITEM")
-public class Item {
+public abstract class Item extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")
@@ -15,7 +18,7 @@ public class Item {
     private  int price;
     private  int stockQuantity;
 
-    @ManyToMany(mappedBy = "items")
+    @ManyToMany(mappedBy = "items", fetch = FetchType.LAZY)
     private List<Category> categories = new ArrayList<>();
 
     public Long getId() {

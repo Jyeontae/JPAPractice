@@ -1,5 +1,6 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Album;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
 
@@ -10,15 +11,21 @@ import javax.persistence.Persistence;
 
 public class JpaMain {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("helloo");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
 
         try {
-            Order order = new Order();
-            order.addOrderItem(new OrderItem());
+            Album album = new Album();
+            album.setName("aaaa");
+            album.setArtist("bbbb");
+            album.setPrice(10000);
+            album.setEtc("limited");
+            album.setStockQuantity(80);
+            em.persist(album);
+
             tx.commit();
         }catch (Exception e){
             tx.rollback();
